@@ -121,6 +121,15 @@ const layoutEnd = `</div>`
  * @type {http.Server}
  */
 const server = http.createServer((req, res) => {
+  /**
+   * 
+   * @type {Stream} req
+   */
+
+  /**
+   * 
+   * @type {Stream} res
+   */
 
   // получаем параметры запроса
   const urlParsed = url.parse(req.url, true)
