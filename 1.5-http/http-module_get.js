@@ -4,7 +4,7 @@
  */
 const http = require('http')
 
-const url = `http://data.fixer.io/api/latest?access_key=1bb9f884de2c22443e0a1c86a0498099&symbols=USD,EUR,RUB`
+const url = `http://data.fixer.io/api/latest?access_key=${process.env.myAPIKey}&symbols=USD,EUR,RUB`
 
 /**
  * @type {http.ClientRequest}

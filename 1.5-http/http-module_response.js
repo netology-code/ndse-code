@@ -1,14 +1,6 @@
 const http = require('http')
 
-http.createServer((request, response) => {
-
-  response.setHeader('UserId', 12)
-  response.setHeader('Content-Type', 'text/html; charset=utf-8;')
-  response.write('<h2>hello world</h2>')
-
-  response.end()
-
-}).listen(3000)
+http.createServer(requestListenerWithRedirects).listen(process.env.PORT)
 
 /**
  *
@@ -27,6 +19,7 @@ function requestListenerWithRouter (request, response) {
   } else if (url === '/contact') {
     response.write('<h2>Contacts</h2>')
   } else {
+    response.statusCode = 404
     response.write('<h2>Not found</h2>')
   }
   response.end()

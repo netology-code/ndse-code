@@ -12,7 +12,24 @@ myEmitter.on('message', message => {
   console.log(`Message: ${message}`)
 })
 
-myEmitter.on('error', error => console.log(`Error: ${error}`))
 
 myEmitter.emit('message', 'Node.js EventEmitter in action')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+myEmitter.on('error', error => console.log(`Error: ${error}`))
+myEmitter.emit('error', 'Node.js EventEmitter in action')
 

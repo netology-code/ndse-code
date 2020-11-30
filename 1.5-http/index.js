@@ -58,6 +58,7 @@ const getFormCreateComponent = () => (`
   <input
     name="count"
     type="number"
+    required
   />
     <button
       class="btn btn-sm btn-success"
@@ -225,6 +226,6 @@ const server = http.createServer((req, res) => {
  * @see https://nodejs.org/docs/latest-v14.x/api/http.html#http_server_listen
  * Starts the HTTP server listening for connections.
  */
-server.listen(3000, () => {
-  console.log('Server is running, go to http://localhost:3000/')
+server.listen(process.env.PORT, () => {
+  console.log(`Server is running, go to http://localhost:${process.env.PORT}/`)
 })

@@ -10,6 +10,6 @@ http.createServer((request, response) => {
   console.log('Все заголовки')
   console.log(request.headers)
 
-  response.end()
+  response.end('ok!')
 
-}).listen(3000)
+}).listen(process.env.PORT)

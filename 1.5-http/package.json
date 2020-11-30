@@ -5,12 +5,16 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "start": "node index.js",
+    "dev": "node -r dotenv/config index.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "node-random-id": "^1.0.1"
+  },
+  "devDependencies": {
+    "dotenv": "^8.2.0"
   }
 }
