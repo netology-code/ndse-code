@@ -1,0 +1,27 @@
+{
+  "name": "node-2.7-auth",
+  "version": "1.0.0",
+  "description": "2.7 Auth code examples",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "node -r dotenv/config express_cookies.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/netology-code/ndse-code.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/netology-code/ndse-code/issues"
+  },
+  "homepage": "https://github.com/netology-code/ndse-code#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "dotenv": "^8.2.0"
+  }
+}
