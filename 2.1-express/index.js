@@ -1,10 +1,8 @@
 const express = require('express');
-const bodyParser = require("body-parser");
+const cors = require('cors');
+const formData = require("express-form-data");
+
 const {Todo} = require('./models');
-
-const app = express();
-app.use(bodyParser.json());
-
 const stor = {
     todo: [],
 };
@@ -13,6 +11,11 @@ const stor = {
     const newTodo = new Todo(`todo ${el}`, `desc todo ${el}`);
     stor.todo.push(newTodo);
 });
+
+const app = express();
+
+app.use(formData.parse());
+app.use(cors());
 
 app.get('/api/todo/', (req, res) => {
     const {todo} = stor;
@@ -39,6 +42,7 @@ app.post('/api/todo/', (req, res) => {
     const newTodo = new Todo(title, desc);
     todo.push(newTodo);
 
+    res.status(201);
     res.json(newTodo);
 });
 
@@ -75,8 +79,7 @@ app.delete('/api/todo/:id', (req, res) => {
     }
 });
 
-
-app.listen(3000);
-
-
-
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+});
