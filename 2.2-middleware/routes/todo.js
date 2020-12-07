@@ -1,8 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const {Todo} = require('../models');
-const fileMiddleware = require('../middleware/file')
-
+const fileMiddleware = require('../middleware/file');
 
 const stor = {
     todo: [],
@@ -38,6 +37,7 @@ router.post('/', (req, res) => {
     const newTodo = new Todo(title, desc);
     todo.push(newTodo);
 
+    res.status(201);
     res.json(newTodo);
 });
 
@@ -74,7 +74,6 @@ router.delete('/:id', (req, res) => {
     }
 });
 
-
 // загрузка файлов
 router.post('/upload-img', fileMiddleware.single('cover-img'), (req, res) => {
     if (req.file) {
@@ -85,6 +84,14 @@ router.post('/upload-img', fileMiddleware.single('cover-img'), (req, res) => {
     } else {
         res.json(null);
     }
+});
+
+router.get('/:id/download-img', (req, res) => {
+    res.download(__dirname+'/../public/img/2020-12-07-cover.png', 'cover.png', err=>{
+        if (err){
+            res.status(404).json();
+        }
+    });
 });
 
 module.exports = router;
