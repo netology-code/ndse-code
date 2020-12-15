@@ -5,7 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "node -r dotenv/config express_cookies.js"
+    "dev:cookie": "node -r dotenv/config express_cookies.js",
+    "dev:session": "node -r dotenv/config express_session.js",
+    "dev:passport": "node -r dotenv/config express_passport.js",
+    "dev:passport-auth": "node -r dotenv/config express_passport-auth.js"
   },
   "repository": {
     "type": "git",
@@ -19,6 +22,7 @@
   },
   "homepage": "https://github.com/netology-code/ndse-code#readme",
   "dependencies": {
+    "cookie-parser": "^1.4.5",
     "express": "^4.17.1"
   },
   "devDependencies": {
