@@ -2,6 +2,7 @@ const records = [
   {
     id: 1,
     username: 'jack',
+    // TODO: не хранить пароли в БД
     password: 'secret',
     displayName: 'Jack',
     emails: [{ value: 'jack@example.com' }],
@@ -39,6 +40,7 @@ exports.findByUsername = function (username, cb) {
   })
 }
 
-exports.verifyPassword = (password) => {
-  
+exports.verifyPassword = (user, password) => {
+  // TODO: не хранить пароли в БД
+  return user.password === password
 }

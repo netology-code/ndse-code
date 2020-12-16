@@ -5,19 +5,17 @@ const passport = require('passport')
 const LocalStrategy = require('passport-local').Strategy
 const db = require('./db')
 
-// Конфигурация локальной стратегии
-
 /**
  * @param {String} username
  * @param {String} password
  * @param {Function} done
  */
-function verify(username, password, done) {
+function verify (username, password, done) {
   db.users.findByUsername(username, function (err, user) {
     if (err) { return done(err) }
     if (!user) { return done(null, false) }
 
-    if (!user.verifyPassword(password)) { return done(null, false) }
+    if (!db.users.verifyPassword(user, password)) { return done(null, false) }
 
     // `user` будет сохранен в `req.user`
     return done(null, user)
@@ -25,16 +23,15 @@ function verify(username, password, done) {
 }
 
 const options = {
-  usernameField: '_username_',
-  passwordField: '_password_',
+  usernameField: 'username',
+  passwordField: 'password',
   passReqToCallback: false,
 }
 
-passport.use('local', new LocalStrategy(verify))
+//  Добавление стратегии для использования
+passport.use('local', new LocalStrategy(options, verify))
 
-// Конфигурирование Passport для работы с сессией
-//
-// Самый простой способ — сохранение user ID
+// Конфигурирование Passport для сохранения пользователя в сессии
 passport.serializeUser(function (user, cb) {
   cb(null, user.id)
 })
@@ -46,11 +43,10 @@ passport.deserializeUser(function (id, cb) {
   })
 })
 
-
 const app = express()
+
 app.set('views', __dirname + '/views')
 app.set('view engine', 'ejs')
-
 
 app.use(require('body-parser').urlencoded({ extended: true }))
 app.use(require('express-session')({
@@ -59,10 +55,8 @@ app.use(require('express-session')({
   saveUninitialized: false,
 }))
 
-
 app.use(passport.initialize())
 app.use(passport.session())
-
 
 app.get('/',
   function (req, res) {
@@ -75,8 +69,14 @@ app.get('/login',
   })
 
 app.post('/login',
-  passport.authenticate('local', { failureRedirect: '/login' }),
+  passport.authenticate(
+    'local',
+    {
+      failureRedirect: '/login',
+    },
+  ),
   function (req, res) {
+    console.log("req.user: ", req.user)
     res.redirect('/')
   })
 
