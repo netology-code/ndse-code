@@ -1,0 +1,36 @@
+{
+  "name": "node-2.7-auth",
+  "version": "1.0.0",
+  "description": "2.7 Auth code examples",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev:cookie": "node -r dotenv/config express_cookies.js",
+    "dev:session": "node -r dotenv/config express_session.js",
+    "dev:passport": "node -r dotenv/config express_passport.js",
+    "dev:passport-oauth": "node -r dotenv/config express_passport-oauth.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/netology-code/ndse-code.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/netology-code/ndse-code/issues"
+  },
+  "homepage": "https://github.com/netology-code/ndse-code#readme",
+  "dependencies": {
+    "cookie-parser": "^1.4.5",
+    "ejs": "^3.1.5",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0",
+    "passport-vkontakte": "^0.5.0"
+  },
+  "devDependencies": {
+    "dotenv": "^8.2.0"
+  }
+}
