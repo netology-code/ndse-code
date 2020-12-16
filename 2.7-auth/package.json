@@ -8,7 +8,7 @@
     "dev:cookie": "node -r dotenv/config express_cookies.js",
     "dev:session": "node -r dotenv/config express_session.js",
     "dev:passport": "node -r dotenv/config express_passport.js",
-    "dev:passport-auth": "node -r dotenv/config express_passport-auth.js"
+    "dev:passport-oauth": "node -r dotenv/config express_passport-oauth.js"
   },
   "repository": {
     "type": "git",
@@ -27,7 +27,8 @@
     "express": "^4.17.1",
     "express-session": "^1.17.1",
     "passport": "^0.4.1",
-    "passport-local": "^1.0.0"
+    "passport-local": "^1.0.0",
+    "passport-vkontakte": "^0.5.0"
   },
   "devDependencies": {
     "dotenv": "^8.2.0"
